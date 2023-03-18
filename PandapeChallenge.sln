@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{D97CC4DA-380D-45F5-88A6-2B90C077EDF8}"
+	ProjectSection(SolutionItems) = preProject
+		docs\README.md = docs\README.md
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{8D5C069B-1D9D-4BA4-A001-C3B4AA53BFB9}"
 EndProject
@@ -21,7 +24,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pandape.Infrastructure", "s
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pandape.Domain", "src\Domain\Pandape.Domain.csproj", "{8A8F984D-407B-47A4-A6D0-797DE9EB63AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pandape.Application", "src\Application\Pandape.Application.csproj", "{73963136-50E0-4337-BED5-AFB83AC087CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pandape.Application", "src\Application\Pandape.Application.csproj", "{73963136-50E0-4337-BED5-AFB83AC087CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pandape.Host.Mvc", "src\Host\Pandape.Host.Mvc\Pandape.Host.Mvc.csproj", "{45E38E1E-320F-41AC-98A1-4D2FF7F30584}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pandape.Host.Mvc.Test", "test\Pandape.Host.Mvc.Test\Pandape.Host.Mvc.Test.csproj", "{3B18275E-CF28-40B0-A236-4C839C16315A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +48,14 @@ Global
 		{73963136-50E0-4337-BED5-AFB83AC087CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{73963136-50E0-4337-BED5-AFB83AC087CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{73963136-50E0-4337-BED5-AFB83AC087CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45E38E1E-320F-41AC-98A1-4D2FF7F30584}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45E38E1E-320F-41AC-98A1-4D2FF7F30584}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45E38E1E-320F-41AC-98A1-4D2FF7F30584}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45E38E1E-320F-41AC-98A1-4D2FF7F30584}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B18275E-CF28-40B0-A236-4C839C16315A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B18275E-CF28-40B0-A236-4C839C16315A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B18275E-CF28-40B0-A236-4C839C16315A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B18275E-CF28-40B0-A236-4C839C16315A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,6 +68,8 @@ Global
 		{804A3EF8-639F-4DA6-B1DB-4FAE85C5E05C} = {4D5F5EA5-651D-4CEF-9EF8-F96F9D312CD9}
 		{8A8F984D-407B-47A4-A6D0-797DE9EB63AA} = {F33682B1-9B07-48DC-BA10-6E66DEE2D0F0}
 		{73963136-50E0-4337-BED5-AFB83AC087CF} = {E82DB7B2-2198-4F0B-80BF-EE4B4BD09E95}
+		{45E38E1E-320F-41AC-98A1-4D2FF7F30584} = {21ADC816-FBA0-4212-886D-54D58E8B52F0}
+		{3B18275E-CF28-40B0-A236-4C839C16315A} = {D0C206DF-441E-4A2F-A02C-6362B49A4998}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {438CBA28-09AF-4F8B-85B6-AA0FCAC0CF21}
