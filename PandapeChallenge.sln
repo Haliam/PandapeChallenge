@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{D97CC4DA-380D-45F5-88A6-2B90C077EDF8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{8D5C069B-1D9D-4BA4-A001-C3B4AA53BFB9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{D0C206DF-441E-4A2F-A02C-6362B49A4998}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Aplication", "Aplication", "{E82DB7B2-2198-4F0B-80BF-EE4B4BD09E95}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{F33682B1-9B07-48DC-BA10-6E66DEE2D0F0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{4D5F5EA5-651D-4CEF-9EF8-F96F9D312CD9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Host", "Host", "{21ADC816-FBA0-4212-886D-54D58E8B52F0}"
+EndProject
+Global
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E82DB7B2-2198-4F0B-80BF-EE4B4BD09E95} = {8D5C069B-1D9D-4BA4-A001-C3B4AA53BFB9}
+		{F33682B1-9B07-48DC-BA10-6E66DEE2D0F0} = {8D5C069B-1D9D-4BA4-A001-C3B4AA53BFB9}
+		{4D5F5EA5-651D-4CEF-9EF8-F96F9D312CD9} = {8D5C069B-1D9D-4BA4-A001-C3B4AA53BFB9}
+		{21ADC816-FBA0-4212-886D-54D58E8B52F0} = {8D5C069B-1D9D-4BA4-A001-C3B4AA53BFB9}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {438CBA28-09AF-4F8B-85B6-AA0FCAC0CF21}
+	EndGlobalSection
+EndGlobal
