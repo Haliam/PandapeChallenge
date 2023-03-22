@@ -7,22 +7,22 @@ using System.Threading.Tasks;
 
 namespace Pandape.Host.Mvc.Controllers
 {
-    public class CandidatesController : Controller
+    public class CandidateExperiencesController : Controller
     {
         private readonly PandapeContext _context;
 
-        public CandidatesController(PandapeContext context)
+        public CandidateExperiencesController(PandapeContext context)
         {
             _context = context;
         }
 
-        // GET: Candidates
+        // GET: CandidateExperiences
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Candidates.ToListAsync());
+            return View(await _context.CandidateExperiences.ToListAsync());
         }
 
-        // GET: Candidates/Details/5
+        // GET: CandidateExperiences/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -30,39 +30,39 @@ namespace Pandape.Host.Mvc.Controllers
                 return NotFound();
             }
 
-            var candidate = await _context.Candidates
-                .FirstOrDefaultAsync(m => m.IdCandidate == id);
-            if (candidate == null)
+            var candidateExperience = await _context.CandidateExperiences
+                .FirstOrDefaultAsync(m => m.IdCandidateExperience == id);
+            if (candidateExperience == null)
             {
                 return NotFound();
             }
 
-            return View(candidate);
+            return View(candidateExperience);
         }
 
-        // GET: Candidates/Create
+        // GET: CandidateExperiences/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Candidates/Create
+        // POST: CandidateExperiences/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdCandidate,Name,SurName,BirthDate,Email,InsertDate,ModifyDate")] Candidate candidate)
+        public async Task<IActionResult> Create([Bind("IdCandidateExperience,IdCandidate,Company,Job,Description,Salary,BeginDate,EndDate,InsertDate,ModifyDate")] CandidateExperience candidateExperience)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(candidate);
+                _context.Add(candidateExperience);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(candidate);
+            return View(candidateExperience);
         }
 
-        // GET: Candidates/Edit/5
+        // GET: CandidateExperiences/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -70,22 +70,22 @@ namespace Pandape.Host.Mvc.Controllers
                 return NotFound();
             }
 
-            var candidate = await _context.Candidates.FindAsync(id);
-            if (candidate == null)
+            var candidateExperience = await _context.CandidateExperiences.FindAsync(id);
+            if (candidateExperience == null)
             {
                 return NotFound();
             }
-            return View(candidate);
+            return View(candidateExperience);
         }
 
-        // POST: Candidates/Edit/5
+        // POST: CandidateExperiences/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdCandidate,Name,SurName,BirthDate,Email,InsertDate,ModifyDate")] Candidate candidate)
+        public async Task<IActionResult> Edit(int id, [Bind("IdCandidateExperience,IdCandidate,Company,Job,Description,Salary,BeginDate,EndDate,InsertDate,ModifyDate")] CandidateExperience candidateExperience)
         {
-            if (id != candidate.IdCandidate)
+            if (id != candidateExperience.IdCandidateExperience)
             {
                 return NotFound();
             }
@@ -94,12 +94,12 @@ namespace Pandape.Host.Mvc.Controllers
             {
                 try
                 {
-                    _context.Update(candidate);
+                    _context.Update(candidateExperience);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CandidateExists(candidate.IdCandidate))
+                    if (!CandidateExperienceExists(candidateExperience.IdCandidateExperience))
                     {
                         return NotFound();
                     }
@@ -110,10 +110,10 @@ namespace Pandape.Host.Mvc.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(candidate);
+            return View(candidateExperience);
         }
 
-        // GET: Candidates/Delete/5
+        // GET: CandidateExperiences/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -121,30 +121,30 @@ namespace Pandape.Host.Mvc.Controllers
                 return NotFound();
             }
 
-            var candidate = await _context.Candidates
-                .FirstOrDefaultAsync(m => m.IdCandidate == id);
-            if (candidate == null)
+            var candidateExperience = await _context.CandidateExperiences
+                .FirstOrDefaultAsync(m => m.IdCandidateExperience == id);
+            if (candidateExperience == null)
             {
                 return NotFound();
             }
 
-            return View(candidate);
+            return View(candidateExperience);
         }
 
-        // POST: Candidates/Delete/5
+        // POST: CandidateExperiences/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var candidate = await _context.Candidates.FindAsync(id);
-            _context.Candidates.Remove(candidate);
+            var candidateExperience = await _context.CandidateExperiences.FindAsync(id);
+            _context.CandidateExperiences.Remove(candidateExperience);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool CandidateExists(int id)
+        private bool CandidateExperienceExists(int id)
         {
-            return _context.Candidates.Any(e => e.IdCandidate == id);
+            return _context.CandidateExperiences.Any(e => e.IdCandidateExperience == id);
         }
     }
 }

@@ -10,6 +10,8 @@ namespace Pandape.Infrastructure.Persistence
         {
         }
 
-        public DbSet<Candidate> Candidate { get; set; }
+        public DbSet<Candidate> Candidates { get; set; }
+        public DbSet<CandidateExperience> CandidateExperiences { get; set; }
+
     }
 }
