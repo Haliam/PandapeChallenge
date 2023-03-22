@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Domain\Pandape.Domain.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Pandape.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

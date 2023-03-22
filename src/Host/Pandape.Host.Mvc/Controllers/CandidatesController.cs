@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Pandape.Domain.Entities;
-using Pandape.Host.Mvc.Data;
+using Pandape.Infrastructure.Persistence;
 using System.Linq;
 using System.Threading.Tasks;
 
