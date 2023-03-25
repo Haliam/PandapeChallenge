@@ -31,7 +31,7 @@ namespace Pandape.Host.Mvc.Controllers
             }
 
             var candidate = await _context.Candidates
-                .FirstOrDefaultAsync(m => m.IdCandidate == id);
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (candidate == null)
             {
                 return NotFound();
@@ -51,7 +51,7 @@ namespace Pandape.Host.Mvc.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdCandidate,Name,SurName,BirthDate,Email,InsertDate,ModifyDate")] Candidate candidate)
+        public async Task<IActionResult> Create([Bind("Id,Name,SurName,BirthDate,Email,InsertDate,ModifyDate")] Candidate candidate)
         {
             if (ModelState.IsValid)
             {
@@ -83,9 +83,9 @@ namespace Pandape.Host.Mvc.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdCandidate,Name,SurName,BirthDate,Email,InsertDate,ModifyDate")] Candidate candidate)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,SurName,BirthDate,Email,InsertDate,ModifyDate")] Candidate candidate)
         {
-            if (id != candidate.IdCandidate)
+            if (id != candidate.Id)
             {
                 return NotFound();
             }
@@ -99,7 +99,7 @@ namespace Pandape.Host.Mvc.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CandidateExists(candidate.IdCandidate))
+                    if (!CandidateExists(candidate.Id))
                     {
                         return NotFound();
                     }
@@ -122,7 +122,7 @@ namespace Pandape.Host.Mvc.Controllers
             }
 
             var candidate = await _context.Candidates
-                .FirstOrDefaultAsync(m => m.IdCandidate == id);
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (candidate == null)
             {
                 return NotFound();
@@ -144,7 +144,7 @@ namespace Pandape.Host.Mvc.Controllers
 
         private bool CandidateExists(int id)
         {
-            return _context.Candidates.Any(e => e.IdCandidate == id);
+            return _context.Candidates.Any(e => e.Id == id);
         }
     }
 }

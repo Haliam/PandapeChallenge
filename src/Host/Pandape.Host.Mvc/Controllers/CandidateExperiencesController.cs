@@ -31,7 +31,7 @@ namespace Pandape.Host.Mvc.Controllers
             }
 
             var candidateExperience = await _context.CandidateExperiences
-                .FirstOrDefaultAsync(m => m.IdCandidateExperience == id);
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (candidateExperience == null)
             {
                 return NotFound();
@@ -51,7 +51,7 @@ namespace Pandape.Host.Mvc.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdCandidateExperience,IdCandidate,Company,Job,Description,Salary,BeginDate,EndDate,InsertDate,ModifyDate")] CandidateExperience candidateExperience)
+        public async Task<IActionResult> Create([Bind("CandidateId,Company,Job,Description,Salary,BeginDate,EndDate,InsertDate,ModifyDate")] CandidateExperience candidateExperience)
         {
             if (ModelState.IsValid)
             {
@@ -83,9 +83,9 @@ namespace Pandape.Host.Mvc.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdCandidateExperience,IdCandidate,Company,Job,Description,Salary,BeginDate,EndDate,InsertDate,ModifyDate")] CandidateExperience candidateExperience)
+        public async Task<IActionResult> Edit(int id, [Bind("CandidateId,Company,Job,Description,Salary,BeginDate,EndDate,InsertDate,ModifyDate")] CandidateExperience candidateExperience)
         {
-            if (id != candidateExperience.IdCandidateExperience)
+            if (id != candidateExperience.Id)
             {
                 return NotFound();
             }
@@ -99,7 +99,7 @@ namespace Pandape.Host.Mvc.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CandidateExperienceExists(candidateExperience.IdCandidateExperience))
+                    if (!CandidateExperienceExists(candidateExperience.Id))
                     {
                         return NotFound();
                     }
@@ -122,7 +122,7 @@ namespace Pandape.Host.Mvc.Controllers
             }
 
             var candidateExperience = await _context.CandidateExperiences
-                .FirstOrDefaultAsync(m => m.IdCandidateExperience == id);
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (candidateExperience == null)
             {
                 return NotFound();
@@ -144,7 +144,7 @@ namespace Pandape.Host.Mvc.Controllers
 
         private bool CandidateExperienceExists(int id)
         {
-            return _context.CandidateExperiences.Any(e => e.IdCandidateExperience == id);
+            return _context.CandidateExperiences.Any(e => e.Id == id);
         }
     }
 }
