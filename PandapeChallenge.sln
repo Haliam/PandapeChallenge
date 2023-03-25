@@ -26,9 +26,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pandape.Domain", "src\Domai
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pandape.Application", "src\Application\Pandape.Application.csproj", "{73963136-50E0-4337-BED5-AFB83AC087CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pandape.Host.Mvc", "src\Host\Pandape.Host.Mvc\Pandape.Host.Mvc.csproj", "{45E38E1E-320F-41AC-98A1-4D2FF7F30584}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pandape.Host.Mvc", "src\Host\Pandape.Host.Mvc\Pandape.Host.Mvc.csproj", "{45E38E1E-320F-41AC-98A1-4D2FF7F30584}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pandape.Host.Mvc.Test", "test\Pandape.Host.Mvc.Test\Pandape.Host.Mvc.Test.csproj", "{3B18275E-CF28-40B0-A236-4C839C16315A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pandape.Host.Mvc.Test", "test\Pandape.Host.Mvc.Test\Pandape.Host.Mvc.Test.csproj", "{3B18275E-CF28-40B0-A236-4C839C16315A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
