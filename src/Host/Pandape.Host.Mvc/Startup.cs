@@ -22,8 +22,11 @@ namespace Pandape.Host.Mvc
         {
             services.AddControllersWithViews();
 
-            services.AddDbContext<PandapeContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("PandapeContext")));
+            services.AddDbContext<PandapeContext>(options => options.UseSqlServer(Configuration.GetConnectionString("PandapeContext")));
+
+            services.AddScoped<ICandidateCommandRepository, CandidateCommandRepository>();
+
+            services.AddScoped<ICandidateExperienceCommandRepository, CandidateExperienceCommandRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
