@@ -26,7 +26,11 @@ namespace Pandape.Host.Mvc
 
             services.AddScoped<ICandidateCommandRepository, CandidateCommandRepository>();
 
+            services.AddScoped<ICandidateQueryRepository, CandidateQueryRepository>();
+
             services.AddScoped<ICandidateExperienceCommandRepository, CandidateExperienceCommandRepository>();
+
+            services.AddScoped<ICandidateExperienceQueryRepository, CandidateExperienceQueryRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
