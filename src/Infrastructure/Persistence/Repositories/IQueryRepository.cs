@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace Pandape.Infrastructure.Persistence
+namespace Pandape.Infrastructure.Persistence.Repositories
 {
     public interface IQueryRepository<T>
     {

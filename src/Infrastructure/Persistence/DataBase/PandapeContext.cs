@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Pandape.Domain.Entities;
-using Pandape.Infrastructure.Configuration;
+using Pandape.Infrastructure.Persistence.DataBase.Configuration;
 
-namespace Pandape.Infrastructure.Persistence
+namespace Pandape.Infrastructure.Persistence.DataBase
 {
     public class PandapeContext : DbContext
     {

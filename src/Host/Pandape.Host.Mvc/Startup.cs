@@ -4,7 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Pandape.Infrastructure.Persistence;
+using Pandape.Infrastructure.Persistence.DataBase;
+using Pandape.Infrastructure.Persistence.Repositories;
 
 namespace Pandape.Host.Mvc
 {

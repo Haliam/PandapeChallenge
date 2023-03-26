@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Pandape.Infrastructure.Persistence;
+using Pandape.Infrastructure.Persistence.DataBase;
 
 namespace Pandape.Infrastructure.Migrations
 {

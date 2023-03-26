@@ -4,7 +4,7 @@ using Pandape.Domain.Entities;
 using System;
 using System.Reflection.Metadata;
 
-namespace Pandape.Infrastructure.Configuration
+namespace Pandape.Infrastructure.Persistence.DataBase.Configuration
 {
     public class CandidateConfiguration : IEntityTypeConfiguration<Candidate>
     {

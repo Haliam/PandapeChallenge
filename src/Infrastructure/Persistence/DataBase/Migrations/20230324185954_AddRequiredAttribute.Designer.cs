@@ -5,13 +5,13 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Pandape.Infrastructure.Persistence;
+using Pandape.Infrastructure.Persistence.DataBase;
 
 namespace Pandape.Infrastructure.Migrations
 {
     [DbContext(typeof(PandapeContext))]
-    [Migration("20230324185050_ModifyTypesToVarchar")]
-    partial class ModifyTypesToVarchar
+    [Migration("20230324185954_AddRequiredAttribute")]
+    partial class AddRequiredAttribute
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -32,6 +32,7 @@ namespace Pandape.Infrastructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasColumnType("varchar(50)")
                         .HasMaxLength(50)
                         .IsUnicode(false);
@@ -43,9 +44,11 @@ namespace Pandape.Infrastructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("varchar(50)");
 
                     b.Property<string>("SurName")
+                        .IsRequired()
                         .HasColumnType("varchar(150)");
 
                     b.HasKey("IdCandidate");
@@ -58,7 +61,7 @@ namespace Pandape.Infrastructure.Migrations
                             IdCandidate = 1,
                             BirthDate = new DateTime(1982, 2, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "alejandro@gmail.com",
-                            InsertDate = new DateTime(2023, 3, 24, 18, 50, 49, 854, DateTimeKind.Local).AddTicks(641),
+                            InsertDate = new DateTime(2023, 3, 24, 18, 59, 53, 947, DateTimeKind.Local).AddTicks(3176),
                             Name = "Alejandro",
                             SurName = "Montu"
                         },
@@ -67,7 +70,7 @@ namespace Pandape.Infrastructure.Migrations
                             IdCandidate = 2,
                             BirthDate = new DateTime(1974, 9, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "jorge@gmail.com",
-                            InsertDate = new DateTime(2023, 3, 24, 18, 50, 49, 856, DateTimeKind.Local).AddTicks(6405),
+                            InsertDate = new DateTime(2023, 3, 24, 18, 59, 53, 950, DateTimeKind.Local).AddTicks(157),
                             Name = "Jorge",
                             SurName = "Gallardo"
                         });
@@ -87,9 +90,11 @@ namespace Pandape.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Company")
+                        .IsRequired()
                         .HasColumnType("varchar(100)");
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("varchar(4000)");
 
                     b.Property<DateTime?>("EndDate")
@@ -102,6 +107,7 @@ namespace Pandape.Infrastructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Job")
+                        .IsRequired()
                         .HasColumnType("varchar(100)");
 
                     b.Property<DateTime?>("ModifyDate")

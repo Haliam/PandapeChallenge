@@ -1,11 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Pandape.Infrastructure.Persistence.DataBase;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace Pandape.Infrastructure.Persistence
+namespace Pandape.Infrastructure.Persistence.Repositories
 {
     public class QueryRepository<T> : IQueryRepository<T> where T : class
     {

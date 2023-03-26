@@ -5,10 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20230324181323_ModifyFieldsToVarchar.cs" />
-    <Compile Remove="Migrations\20230324181323_ModifyFieldsToVarchar.Designer.cs" />
-    <Compile Remove="Migrations\20230324184757_ModifyTypesToVarchar.cs" />
-    <Compile Remove="Migrations\20230324184757_ModifyTypesToVarchar.Designer.cs" />
+    <Compile Remove="Persistence\DataBase\Migrations\20230324181323_ModifyFieldsToVarchar.cs" />
+    <Compile Remove="Persistence\DataBase\Migrations\20230324181323_ModifyFieldsToVarchar.Designer.cs" />
+    <Compile Remove="Persistence\DataBase\Migrations\20230324184757_ModifyTypesToVarchar.cs" />
+    <Compile Remove="Persistence\DataBase\Migrations\20230324184757_ModifyTypesToVarchar.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

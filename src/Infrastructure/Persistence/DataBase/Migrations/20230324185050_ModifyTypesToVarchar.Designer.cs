@@ -5,13 +5,13 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Pandape.Infrastructure.Persistence;
+using Pandape.Infrastructure.Persistence.DataBase;
 
 namespace Pandape.Infrastructure.Migrations
 {
     [DbContext(typeof(PandapeContext))]
-    [Migration("20230325160642_ModifyDataAnnotationOnEntities")]
-    partial class ModifyDataAnnotationOnEntities
+    [Migration("20230324185050_ModifyTypesToVarchar")]
+    partial class ModifyTypesToVarchar
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,7 +23,7 @@ namespace Pandape.Infrastructure.Migrations
 
             modelBuilder.Entity("Pandape.Domain.Entities.Candidate", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("IdCandidate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -32,8 +32,9 @@ namespace Pandape.Infrastructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("varchar(250)");
+                        .HasColumnType("varchar(50)")
+                        .HasMaxLength(50)
+                        .IsUnicode(false);
 
                     b.Property<DateTime>("InsertDate")
                         .HasColumnType("datetime2");
@@ -42,21 +43,39 @@ namespace Pandape.Infrastructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("varchar(50)");
 
                     b.Property<string>("SurName")
-                        .IsRequired()
                         .HasColumnType("varchar(150)");
 
-                    b.HasKey("Id");
+                    b.HasKey("IdCandidate");
 
                     b.ToTable("Candidates");
+
+                    b.HasData(
+                        new
+                        {
+                            IdCandidate = 1,
+                            BirthDate = new DateTime(1982, 2, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "alejandro@gmail.com",
+                            InsertDate = new DateTime(2023, 3, 24, 18, 50, 49, 854, DateTimeKind.Local).AddTicks(641),
+                            Name = "Alejandro",
+                            SurName = "Montu"
+                        },
+                        new
+                        {
+                            IdCandidate = 2,
+                            BirthDate = new DateTime(1974, 9, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "jorge@gmail.com",
+                            InsertDate = new DateTime(2023, 3, 24, 18, 50, 49, 856, DateTimeKind.Local).AddTicks(6405),
+                            Name = "Jorge",
+                            SurName = "Gallardo"
+                        });
                 });
 
             modelBuilder.Entity("Pandape.Domain.Entities.CandidateExperience", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("IdCandidateExperience")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -64,25 +83,25 @@ namespace Pandape.Infrastructure.Migrations
                     b.Property<DateTime>("BeginDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("CandidateId")
+                    b.Property<int?>("CandidateIdCandidate")
                         .HasColumnType("int");
 
                     b.Property<string>("Company")
-                        .IsRequired()
                         .HasColumnType("varchar(100)");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("varchar(4000)");
 
                     b.Property<DateTime?>("EndDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("IdCandidate")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("InsertDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Job")
-                        .IsRequired()
                         .HasColumnType("varchar(100)");
 
                     b.Property<DateTime?>("ModifyDate")
@@ -91,20 +110,18 @@ namespace Pandape.Infrastructure.Migrations
                     b.Property<decimal>("Salary")
                         .HasColumnType("decimal(8,2)");
 
-                    b.HasKey("Id");
+                    b.HasKey("IdCandidateExperience");
 
-                    b.HasIndex("CandidateId");
+                    b.HasIndex("CandidateIdCandidate");
 
                     b.ToTable("CandidateExperiences");
                 });
 
             modelBuilder.Entity("Pandape.Domain.Entities.CandidateExperience", b =>
                 {
-                    b.HasOne("Pandape.Domain.Entities.Candidate", "Candidate")
+                    b.HasOne("Pandape.Domain.Entities.Candidate", null)
                         .WithMany("CandidateExperiences")
-                        .HasForeignKey("CandidateId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CandidateIdCandidate");
                 });
 #pragma warning restore 612, 618
         }

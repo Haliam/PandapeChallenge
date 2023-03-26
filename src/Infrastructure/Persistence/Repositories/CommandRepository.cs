@@ -1,8 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Pandape.Infrastructure.Persistence.DataBase;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Pandape.Infrastructure.Persistence
+namespace Pandape.Infrastructure.Persistence.Repositories
 {
     public class CommandRepository<T> : ICommandRepository<T> where T : class
     {

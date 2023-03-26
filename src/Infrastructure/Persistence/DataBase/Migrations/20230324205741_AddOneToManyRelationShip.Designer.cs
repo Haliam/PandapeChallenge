@@ -5,13 +5,13 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Pandape.Infrastructure.Persistence;
+using Pandape.Infrastructure.Persistence.DataBase;
 
 namespace Pandape.Infrastructure.Migrations
 {
     [DbContext(typeof(PandapeContext))]
-    [Migration("20230324185954_AddRequiredAttribute")]
-    partial class AddRequiredAttribute
+    [Migration("20230324205741_AddOneToManyRelationShip")]
+    partial class AddOneToManyRelationShip
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,7 +23,7 @@ namespace Pandape.Infrastructure.Migrations
 
             modelBuilder.Entity("Pandape.Domain.Entities.Candidate", b =>
                 {
-                    b.Property<int>("IdCandidate")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -51,26 +51,28 @@ namespace Pandape.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(150)");
 
-                    b.HasKey("IdCandidate");
+                    b.HasKey("Id");
+
+                    b.HasAlternateKey("Email");
 
                     b.ToTable("Candidates");
 
                     b.HasData(
                         new
                         {
-                            IdCandidate = 1,
+                            Id = 1,
                             BirthDate = new DateTime(1982, 2, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "alejandro@gmail.com",
-                            InsertDate = new DateTime(2023, 3, 24, 18, 59, 53, 947, DateTimeKind.Local).AddTicks(3176),
+                            InsertDate = new DateTime(2023, 3, 24, 20, 57, 41, 304, DateTimeKind.Local).AddTicks(3683),
                             Name = "Alejandro",
                             SurName = "Montu"
                         },
                         new
                         {
-                            IdCandidate = 2,
+                            Id = 2,
                             BirthDate = new DateTime(1974, 9, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "jorge@gmail.com",
-                            InsertDate = new DateTime(2023, 3, 24, 18, 59, 53, 950, DateTimeKind.Local).AddTicks(157),
+                            InsertDate = new DateTime(2023, 3, 24, 20, 57, 41, 307, DateTimeKind.Local).AddTicks(2587),
                             Name = "Jorge",
                             SurName = "Gallardo"
                         });
@@ -78,7 +80,7 @@ namespace Pandape.Infrastructure.Migrations
 
             modelBuilder.Entity("Pandape.Domain.Entities.CandidateExperience", b =>
                 {
-                    b.Property<int>("IdCandidateExperience")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -86,7 +88,7 @@ namespace Pandape.Infrastructure.Migrations
                     b.Property<DateTime>("BeginDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("CandidateIdCandidate")
+                    b.Property<int>("CandidateId")
                         .HasColumnType("int");
 
                     b.Property<string>("Company")
@@ -99,9 +101,6 @@ namespace Pandape.Infrastructure.Migrations
 
                     b.Property<DateTime?>("EndDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<int>("IdCandidate")
-                        .HasColumnType("int");
 
                     b.Property<DateTime>("InsertDate")
                         .HasColumnType("datetime2");
@@ -116,18 +115,20 @@ namespace Pandape.Infrastructure.Migrations
                     b.Property<decimal>("Salary")
                         .HasColumnType("decimal(8,2)");
 
-                    b.HasKey("IdCandidateExperience");
+                    b.HasKey("Id");
 
-                    b.HasIndex("CandidateIdCandidate");
+                    b.HasIndex("CandidateId");
 
                     b.ToTable("CandidateExperiences");
                 });
 
             modelBuilder.Entity("Pandape.Domain.Entities.CandidateExperience", b =>
                 {
-                    b.HasOne("Pandape.Domain.Entities.Candidate", null)
+                    b.HasOne("Pandape.Domain.Entities.Candidate", "Candidate")
                         .WithMany("CandidateExperiences")
-                        .HasForeignKey("CandidateIdCandidate");
+                        .HasForeignKey("CandidateId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
