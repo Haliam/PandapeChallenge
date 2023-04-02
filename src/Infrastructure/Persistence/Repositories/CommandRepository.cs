@@ -26,6 +26,7 @@ namespace Pandape.Infrastructure.Persistence.Repositories
         public async Task InsertRange(IEnumerable<T> entities)
         {
             await _dbSet.AddRangeAsync(entities);
+            await _context.SaveChangesAsync();
         }
 
         public async Task Update(T entity)
@@ -43,8 +44,8 @@ namespace Pandape.Infrastructure.Persistence.Repositories
         public async Task Delete(object id)
         {
             var entity = _dbSet.FindAsync(id);
-
             await Delete(entity.Result);
+            await _context.SaveChangesAsync();
         }
 
         public async Task DeleteRange(IEnumerable<T> entities)
