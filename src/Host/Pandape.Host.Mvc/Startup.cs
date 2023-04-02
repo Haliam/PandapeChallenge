@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Pandape.Application.AppServices;
+using Pandape.Domain.Entities;
 using Pandape.Infrastructure.Persistence.DataBase;
 using Pandape.Infrastructure.Persistence.Repositories;
 
@@ -32,6 +34,8 @@ namespace Pandape.Host.Mvc
             services.AddScoped<ICandidateExperienceCommandRepository, CandidateExperienceCommandRepository>();
 
             services.AddScoped<ICandidateExperienceQueryRepository, CandidateExperienceQueryRepository>();
+
+            services.AddScoped<ICandidateAppService, CandidateAppService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
