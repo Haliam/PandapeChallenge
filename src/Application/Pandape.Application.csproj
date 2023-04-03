@@ -6,12 +6,12 @@
 
   <ItemGroup>
     <Folder Include="Mapping\" />
-    <Folder Include="CQRS\" />
     <Folder Include="ViewModels\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="MediatR" Version="12.0.1" />
   </ItemGroup>
 
   <ItemGroup>
