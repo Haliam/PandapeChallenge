@@ -24,6 +24,8 @@ namespace Pandape.Host.Mvc
         {
             services.AddControllersWithViews();
 
+            services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Startup).Assembly));
+
             services.AddDbContext<PandapeContext>(options => options.UseSqlServer(Configuration.GetConnectionString("PandapeContext")));
 
             services.AddScoped<ICandidateCommandRepository, CandidateCommandRepository>();
