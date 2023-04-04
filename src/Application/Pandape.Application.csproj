@@ -5,12 +5,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Mapping\" />
+    <Compile Remove="AppServices\CandidateAppService.cs" />
+    <Compile Remove="AppServices\CommandAppService.cs" />
+    <Compile Remove="AppServices\ICommandAppService.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="ViewModels\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
     <PackageReference Include="MediatR" Version="12.0.1" />
   </ItemGroup>
 
