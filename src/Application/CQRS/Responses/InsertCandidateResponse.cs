@@ -2,5 +2,6 @@
 {
     public class InsertCandidateResponse
     {
+        public bool IsInserted { get; set; }
     }
 }
