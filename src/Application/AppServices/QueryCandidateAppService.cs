@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using Pandape.Application.CQRS.Queries;
 using Pandape.Application.CQRS.Responses;
+using Pandape.Domain.Entities;
 using Pandape.Infrastructure.Persistence.Repositories;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Pandape.Application.AppServices
@@ -18,35 +20,29 @@ namespace Pandape.Application.AppServices
 
         public async Task<FindCandidateResponse> Find(FindCandidateQuery query)
         {
-            var findCandidateResponse = new FindCandidateResponse();
+            var candidates = await CandidateQueryRepository.Find(query.Expression);
 
-            //await CandidateQueryRepository.Find();
+            var response = new FindCandidateResponse { Candidates = candidates };
 
-            return findCandidateResponse;
+            return response;
         }
 
         public async Task<GetAllCandidatesResponse> GetAll()
         {
             var candidates = await CandidateQueryRepository.GetAll();
 
-            var getAllCandidatesResponse = new GetAllCandidatesResponse();
+            var response = new GetAllCandidatesResponse { Candidates = Mapper.Map<IEnumerable<Candidate>>(candidates) };
 
-            getAllCandidatesResponse.Candidates = candidates;
-
-            //var getAllCandidatesResponse = Mapper.Map<GetAllCandidatesResponse>(candidates);
-
-            return getAllCandidatesResponse;
+            return response;
         }
 
         public async Task<GetByIdCandidateResponse> GetById(GetByIdCandidateQuery query)
         {
-            var id = Mapper.Map<int>(query.Id);
+            var candidate = await CandidateQueryRepository.GetById(query.Id);
 
-            var candidate = await CandidateQueryRepository.GetById(id);
+            var response = new GetByIdCandidateResponse { Candidate = candidate };
 
-            var getByIdCandidateResponse = Mapper.Map<GetByIdCandidateResponse>(candidate);
-
-            return getByIdCandidateResponse;
+            return response;
         }
     }
 }
