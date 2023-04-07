@@ -1,3 +1,4 @@
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -5,8 +6,13 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Pandape.Application.AppServices;
+using Pandape.Application.CQRS.Handlers;
+using Pandape.Application.CQRS.Queries;
+using Pandape.Application.Mapping;
+using Pandape.Host.Mvc.Controllers;
 using Pandape.Infrastructure.Persistence.DataBase;
 using Pandape.Infrastructure.Persistence.Repositories;
+using System;
 
 namespace Pandape.Host.Mvc
 {
@@ -24,6 +30,12 @@ namespace Pandape.Host.Mvc
         {
             services.AddControllersWithViews();
 
+            services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Startup).Assembly));
+
+            services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(GetAllCandidatesQuery).Assembly));
+
+            services.AddAutoMapper(typeof(Startup).Assembly);
+
             services.AddDbContext<PandapeContext>(options => options.UseSqlServer(Configuration.GetConnectionString("PandapeContext")));
 
             services.AddScoped<ICandidateCommandRepository, CandidateCommandRepository>();
@@ -34,7 +46,9 @@ namespace Pandape.Host.Mvc
 
             services.AddScoped<ICandidateExperienceQueryRepository, CandidateExperienceQueryRepository>();
 
-            services.AddScoped<ICandidateAppService, CandidateAppService>();
+            services.AddScoped<ICommandCandidateAppService, CommandCandidateAppService>();
+
+            services.AddScoped<IQueryCandidateAppService, QueryCandidateAppService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
