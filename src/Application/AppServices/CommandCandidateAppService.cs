@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Pandape.Application.CQRS.Commands;
 using Pandape.Application.CQRS.Responses;
-using Pandape.Domain.Entities;
 using Pandape.Infrastructure.Persistence.Repositories;
 using System.Threading.Tasks;
 
@@ -19,23 +18,29 @@ namespace Pandape.Application.AppServices
 
         public async Task<InsertCandidateResponse> Insert(InsertCandidateCommand command)
         {
-            var candidate = Mapper.Map<Candidate>(command);
+            await CandidateCommandRepository.Insert(command.Candidate);
 
-            await CandidateCommandRepository.Insert(candidate);
+            var response = new InsertCandidateResponse { IsInserted = true};
 
-            var insertCandidateResponse = new InsertCandidateResponse { IsInserted = true};
-
-            return insertCandidateResponse;
+            return response;
         }
 
         public async Task<UpdateCandidateResponse> Update(UpdateCandidateCommand command)
         {
-            throw new System.NotImplementedException();
+            await CandidateCommandRepository.Update(command.Candidate);
+
+            var response = new UpdateCandidateResponse { IsUpdated = true };
+
+            return response;
         }
 
         public async Task<DeleteCandidateResponse> Delete(DeleteCandidateCommand command)
         {
-            throw new System.NotImplementedException();
+            await CandidateCommandRepository.Delete(command.Id);
+
+            var response = new DeleteCandidateResponse { IsDeleted = true };
+
+            return response;
         }
     }
 }

@@ -2,5 +2,6 @@
 {
     public class DeleteCandidateResponse
     {
+        public bool IsDeleted { get; set; }
     }
 }

@@ -2,5 +2,6 @@
 {
     public class UpdateCandidateResponse
     {
+        public bool IsUpdated { get; internal set; }
     }
 }
