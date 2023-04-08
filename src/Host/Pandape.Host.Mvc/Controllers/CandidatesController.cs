@@ -1,43 +1,34 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using Pandape.Application.CQRS.Commands;
+using Pandape.Application.CQRS.Queries;
 using Pandape.Domain.Entities;
-using Pandape.Infrastructure.Persistence.DataBase;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Pandape.Host.Mvc.Controllers
 {
     public class CandidatesController : Controller
     {
-        private readonly PandapeContext _context;
+        protected IMediator Mediator { get; }
 
-        public CandidatesController(PandapeContext context)
-        {
-            _context = context;
-        }
+        public CandidatesController(IMediator mediator) => Mediator = mediator;
+
 
         // GET: Candidates
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Candidates.ToListAsync());
+            var response = await Mediator.Send(new GetAllCandidatesQuery());
+
+            return View(response.Candidates);
         }
 
+
         // GET: Candidates/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            var response = await Mediator.Send(new GetDetailsCandidateQuery(id));
 
-            var candidate = await _context.Candidates
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (candidate == null)
-            {
-                return NotFound();
-            }
-
-            return View(candidate);
+            return View(response.Candidate);
         }
 
         // GET: Candidates/Create
@@ -47,88 +38,49 @@ namespace Pandape.Host.Mvc.Controllers
         }
 
         // POST: Candidates/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name,SurName,BirthDate,Email,InsertDate,ModifyDate")] Candidate candidate)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(candidate);
-                await _context.SaveChangesAsync();
+                var response = await Mediator.Send(new InsertCandidateCommand(candidate));
+
                 return RedirectToAction(nameof(Index));
             }
+
             return View(candidate);
         }
 
         // GET: Candidates/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            var response = await Mediator.Send(new GetByIdCandidateQuery(id));
 
-            var candidate = await _context.Candidates.FindAsync(id);
-            if (candidate == null)
-            {
-                return NotFound();
-            }
-            return View(candidate);
+            return View(response.Candidate);
         }
 
         // POST: Candidates/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,SurName,BirthDate,Email,InsertDate,ModifyDate")] Candidate candidate)
         {
-            if (id != candidate.Id)
-            {
-                return NotFound();
-            }
-
             if (ModelState.IsValid)
             {
-                try
-                {
-                    _context.Update(candidate);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!CandidateExists(candidate.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                var response = await Mediator.Send(new UpdateCandidateCommand(id, candidate));
+
                 return RedirectToAction(nameof(Index));
             }
+
             return View(candidate);
         }
 
         // GET: Candidates/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            var response = await Mediator.Send(new GetByIdCandidateQuery(id));
 
-            var candidate = await _context.Candidates
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (candidate == null)
-            {
-                return NotFound();
-            }
-
-            return View(candidate);
+            return View(response.Candidate);
         }
 
         // POST: Candidates/Delete/5
@@ -136,15 +88,9 @@ namespace Pandape.Host.Mvc.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var candidate = await _context.Candidates.FindAsync(id);
-            _context.Candidates.Remove(candidate);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
+            var response = await Mediator.Send(new DeleteCandidateCommand(id));
 
-        private bool CandidateExists(int id)
-        {
-            return _context.Candidates.Any(e => e.Id == id);
+            return RedirectToAction(nameof(Index));
         }
     }
 }
