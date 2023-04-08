@@ -44,5 +44,14 @@ namespace Pandape.Application.AppServices
 
             return response;
         }
+
+        public async Task<GetDetailsCandidateResponse> GetDetails(GetDetailsCandidateQuery query)
+        {
+            var candidate = await CandidateQueryRepository.GetById(query.Id);
+
+            var response = new GetDetailsCandidateResponse { Candidate = candidate };
+
+            return response;
+        }
     }
 }

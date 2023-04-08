@@ -11,5 +11,7 @@ namespace Pandape.Application.AppServices
         Task<GetAllCandidatesResponse> GetAll();
 
         Task<GetByIdCandidateResponse> GetById(GetByIdCandidateQuery query);
+
+        Task<GetDetailsCandidateResponse> GetDetails(GetDetailsCandidateQuery query);
     }
 }
