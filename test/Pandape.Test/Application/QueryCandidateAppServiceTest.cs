@@ -80,7 +80,7 @@ namespace Pandape.Test.Application
         {
             CandidateQueryRepository.Setup(x => x.GetById(candidate.Id)).ReturnsAsync(candidate);
 
-            var query = new GetByIdCandidateQuery { Id = candidate.Id };
+            var query = new GetByIdCandidateQuery(candidate.Id);
 
             var result = await QueryCandidateAppService.GetById(query);
 
