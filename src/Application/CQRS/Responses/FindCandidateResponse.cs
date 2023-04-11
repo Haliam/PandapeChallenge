@@ -1,10 +1,10 @@
-﻿using Pandape.Domain.Entities;
+﻿using Pandape.Application.Dtos;
 using System.Collections.Generic;
 
 namespace Pandape.Application.CQRS.Responses
 {
     public class FindCandidateResponse
     {
-        public IEnumerable<Candidate> Candidates { get; set; }
+        public IEnumerable<CandidateDto> CandidatesDto { get; set; }
     }
 }

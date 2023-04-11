@@ -1,12 +1,12 @@
-﻿using Pandape.Domain.Entities;
+﻿using Pandape.Application.Dtos;
 using System.Collections.Generic;
 
 namespace Pandape.Application.CQRS.Responses
 {
     public class GetDetailsCandidateResponse
     {
-        public Candidate Candidate { get; set; }
+        public CandidateDto CandidateDto { get; set; }
 
-        public List<CandidateExperience> CandidateExperiences { get; set; }
+        public List<CandidateExperienceDto> CandidateExperiencesDto { get; set; }
     }
 }

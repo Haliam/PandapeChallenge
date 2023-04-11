@@ -5,10 +5,10 @@ namespace Pandape.Application.CQRS.Responses
 {
     public class GetAllCandidatesResponse
     {
-        public IEnumerable<CandidateDto> Candidates { get; set; }
+        public IEnumerable<CandidateDto> CandidatesDto { get; set; }
 
         public string Errors { get;  set; }
 
-        public List<CandidateExperienceDto> CandidateExperiences { get; set; }
+        public List<CandidateExperienceDto> CandidateExperiencesDto { get; set; }
     }
 }

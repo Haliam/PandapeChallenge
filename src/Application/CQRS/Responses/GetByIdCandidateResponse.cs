@@ -1,10 +1,11 @@
-﻿using Pandape.Domain.Entities;
+﻿using Pandape.Application.Dtos;
 
 namespace Pandape.Application.CQRS.Responses
 {
     public class GetByIdCandidateResponse
     {
-        public Candidate Candidate { get; set; }
+        public CandidateDto CandidateDto { get; set; }
+
         public string Errors { get; internal set; }
     }
 }
