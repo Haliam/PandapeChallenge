@@ -34,7 +34,7 @@ namespace Pandape.Test.Application
         {
             var config = new MapperConfiguration(mc =>
             {
-                mc.AddProfile(new CandidateProfile());
+                mc.AddProfile(new CandidateAppProfile());
             });
 
             Mapper = config.CreateMapper();

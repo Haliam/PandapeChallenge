@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Pandape.Application.AppServices;
 using Pandape.Application.CQRS.Queries;
+using Pandape.Application.Mapping;
 using Pandape.Host.Mvc.ViewModels;
 using Pandape.Infrastructure.Persistence.DataBase;
 using Pandape.Infrastructure.Persistence.Repositories;
@@ -31,6 +32,8 @@ namespace Pandape.Host.Mvc
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(GetAllCandidatesQuery).Assembly));
 
             services.AddAutoMapper(typeof(Startup).Assembly);
+
+            services.AddAutoMapper(typeof(CandidateAppProfile).Assembly);
 
             services.AddDbContext<PandapeContext>(options => options.UseSqlServer(Configuration.GetConnectionString("PandapeContext")));
 
