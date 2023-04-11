@@ -1,5 +1,4 @@
-﻿using Pandape.Domain.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -21,8 +20,8 @@ namespace Pandape.Host.Mvc.ViewModels
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime InsertDate { get; set; }
 
-        public Candidate Candidate { get; set; }
+        public CandidateViewModel Candidate { get; set; }
 
-        public List<CandidateExperience> CandidateExperiences { get; set; }
+        public List<CandidateExperienceViewModel> CandidateExperiences { get; set; }
     }
 }

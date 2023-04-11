@@ -1,9 +1,7 @@
-﻿using Pandape.Domain.Entities;
-
-namespace Pandape.Host.Mvc.ViewModels
+﻿namespace Pandape.Host.Mvc.ViewModels
 {
     public class DeleteCandidateViewModel
     {
-        public Candidate Candidate { get; set; }
+        public CandidateViewModel Candidate { get; set; }
     }
 }
