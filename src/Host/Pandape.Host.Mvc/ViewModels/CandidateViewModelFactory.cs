@@ -1,10 +1,15 @@
-﻿using Pandape.Application.CQRS.Responses;
+﻿using AutoMapper;
+using Pandape.Application.CQRS.Responses;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Pandape.Host.Mvc.ViewModels
 {
-    public class CandidateViewModelFactory : ICandidateViewModelFactory
+    public class CandidateViewModelFactory : ViewModelFactoryBase, ICandidateViewModelFactory
     {
+        public CandidateViewModelFactory(IMapper mapper) : base(mapper)
+        {
+        }
 
         public GetAllCandidatesViewModel GetAll(GetAllCandidatesResponse getAllCandidatesResponse)
         {
@@ -12,22 +17,7 @@ namespace Pandape.Host.Mvc.ViewModels
 
             var candidates = getAllCandidatesResponse.Candidates;
 
-            viewModel.Candidates = new List<CandidateViewModel>();
-
-            foreach (var item in candidates)
-            {
-                var candidateViewModel = new CandidateViewModel();
-
-                candidateViewModel.Id = item.Id;
-                candidateViewModel.Name = item.Name;
-                candidateViewModel.SurName = item.SurName;
-                candidateViewModel.BirthDate = item.BirthDate;
-                candidateViewModel.Email = item.Email;
-                candidateViewModel.ModifyDate = item.ModifyDate;
-                candidateViewModel.InsertDate = item.InsertDate;
-
-                viewModel.Candidates.Add(candidateViewModel);
-            }
+            viewModel.Candidates = Mapper.Map<IEnumerable<CandidateViewModel>>(candidates).ToList();
 
             return viewModel;
         }
