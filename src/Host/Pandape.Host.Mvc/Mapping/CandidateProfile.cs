@@ -9,6 +9,8 @@ namespace Pandape.Host.Mvc.Mapping
         public CandidateProfile() 
         {
             CreateMap<CandidateDto, CandidateViewModel>().ReverseMap();
+
+            CreateMap<CandidateExperienceDto, CandidateExperienceViewModel>().ReverseMap();
         }
     }
 }
