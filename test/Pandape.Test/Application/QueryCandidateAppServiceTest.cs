@@ -50,9 +50,9 @@ namespace Pandape.Test.Application
 
             result.Should().NotBeNull();
 
-            result.Candidates.Should().NotBeNull();
+            result.CandidatesDto.Should().NotBeNull();
 
-            result.Candidates.Should().BeEquivalentTo(candidates);
+            result.CandidatesDto.Should().BeEquivalentTo(candidates);
 
             CandidateQueryRepository.Verify(x => x.Find(query.Expression), Times.Once);
         }
@@ -67,9 +67,9 @@ namespace Pandape.Test.Application
 
             result.Should().NotBeNull();
 
-            result.Candidates.Should().NotBeNull();
+            result.CandidatesDto.Should().NotBeNull();
 
-            result.Candidates.Should().BeEquivalentTo(candidates);
+            result.CandidatesDto.Should().BeEquivalentTo(candidates);
 
             CandidateQueryRepository.Verify(x => x.GetAll(), Times.Once);
         }
@@ -86,11 +86,11 @@ namespace Pandape.Test.Application
 
             result.Should().NotBeNull();
 
-            result.Candidate.Should().NotBeNull();
+            result.CandidateDto.Should().NotBeNull();
 
-            result.Candidate.Id.Should().Be(query.Id);
+            result.CandidateDto.Id.Should().Be(query.Id);
 
-            CandidateQueryRepository.Verify(x => x.GetById(result.Candidate.Id), Times.Once);
+            CandidateQueryRepository.Verify(x => x.GetById(result.CandidateDto.Id), Times.Once);
         }
     }
 }
