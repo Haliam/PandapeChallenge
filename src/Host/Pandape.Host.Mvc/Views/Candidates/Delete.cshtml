@@ -1,4 +1,4 @@
-﻿@model Pandape.Domain.Entities.Candidate
+﻿@model Pandape.Host.Mvc.ViewModels.DeleteCandidateViewModel
 
 @{
     ViewData["Title"] = "Delete";
@@ -12,45 +12,45 @@
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.Candidate.Name)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
+            @Html.DisplayFor(model => model.Candidate.Name)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.SurName)
+            @Html.DisplayNameFor(model => model.Candidate.SurName)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.SurName)
+            @Html.DisplayFor(model => model.Candidate.SurName)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.BirthDate)
+            @Html.DisplayNameFor(model => model.Candidate.BirthDate)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.BirthDate)
+            @Html.DisplayFor(model => model.Candidate.BirthDate)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Email)
+            @Html.DisplayNameFor(model => model.Candidate.Email)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Email)
+            @Html.DisplayFor(model => model.Candidate.Email)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.InsertDate)
+            @Html.DisplayNameFor(model => model.Candidate.InsertDate)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.InsertDate)
+            @Html.DisplayFor(model => model.Candidate.InsertDate)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ModifyDate)
+            @Html.DisplayNameFor(model => model.Candidate.ModifyDate)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ModifyDate)
+            @Html.DisplayFor(model => model.Candidate.ModifyDate)
         </dd>
     </dl>
     
     <form asp-action="Delete">
-        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="Candidate.Id" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
         <a asp-action="Index">Back to List</a>
     </form>

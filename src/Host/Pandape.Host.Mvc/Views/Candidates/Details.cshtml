@@ -1,54 +1,69 @@
-﻿@model Pandape.Domain.Entities.Candidate
+﻿@model Pandape.Host.Mvc.ViewModels.GetDetailsCandidateViewModel
 
 @{
     ViewData["Title"] = "Details";
+    var _DetailsExperience = "~/Views/Candidates/_DetailsExperiencePartial.cshtml";
 }
 
 <h1>Details</h1>
 
 <div>
     <h4>Candidate</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.SurName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.SurName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.BirthDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.BirthDate)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.InsertDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.InsertDate)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ModifyDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ModifyDate)
-        </dd>
-    </dl>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Candidate.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Candidate.SurName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Candidate.BirthDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Candidate.Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Candidate.InsertDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Candidate.ModifyDate)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => model.Candidate.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Candidate.SurName)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Candidate.BirthDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Candidate.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Candidate.InsertDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Candidate.ModifyDate)
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>
+
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    @await Html.PartialAsync(_DetailsExperience)
+</div>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Candidate.Id">Edit</a> 
     <a asp-action="Index">Back to List</a>
 </div>
