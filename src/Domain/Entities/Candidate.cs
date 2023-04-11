@@ -19,6 +19,8 @@ namespace Pandape.Domain.Entities
         public string SurName { get; set; }
 
         [Required]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}")]
         public DateTime BirthDate { get; set; }
 
         [Required]
@@ -27,8 +29,12 @@ namespace Pandape.Domain.Entities
         public string Email { get; set; }
 
         [Required]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}")]
         public DateTime InsertDate { get; set; }
 
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}")]
         public DateTime? ModifyDate { get; set; }
 
         /// <summary>
