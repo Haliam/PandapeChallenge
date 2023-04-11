@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Pandape.Application.CQRS.Commands;
 using Pandape.Application.CQRS.Queries;
+using Pandape.Host.Mvc.ViewModels;
 using Pandape.Domain.Entities;
 using System.Threading.Tasks;
 
@@ -11,24 +12,29 @@ namespace Pandape.Host.Mvc.Controllers
     {
         protected IMediator Mediator { get; }
 
-        public CandidatesController(IMediator mediator) => Mediator = mediator;
+        public ICandidateViewModelFactory ViewModelFactory { get; set; }
 
+        public CandidatesController(IMediator mediator, ICandidateViewModelFactory viewModelFactory)
+        {
+            Mediator = mediator;
+
+            ViewModelFactory = viewModelFactory;
+        }
 
         // GET: Candidates
         public async Task<IActionResult> Index()
         {
             var response = await Mediator.Send(new GetAllCandidatesQuery());
 
-            return View(response.Candidates);
+            return View(ViewModelFactory.GetAll(response));
         }
-
 
         // GET: Candidates/Details/5
         public async Task<IActionResult> Details(int id)
         {
             var response = await Mediator.Send(new GetDetailsCandidateQuery(id));
 
-            return View(response.Candidate);
+            return View(ViewModelFactory.Details(response));
         }
 
         // GET: Candidates/Create
@@ -57,8 +63,9 @@ namespace Pandape.Host.Mvc.Controllers
         {
             var response = await Mediator.Send(new GetByIdCandidateQuery(id));
 
-            return View(response.Candidate);
+            return View(ViewModelFactory.Edit(response));
         }
+
 
         // POST: Candidates/Edit/5
         [HttpPost]
@@ -80,8 +87,9 @@ namespace Pandape.Host.Mvc.Controllers
         {
             var response = await Mediator.Send(new GetByIdCandidateQuery(id));
 
-            return View(response.Candidate);
+            return View(ViewModelFactory.Delete(response));
         }
+
 
         // POST: Candidates/Delete/5
         [HttpPost, ActionName("Delete")]
