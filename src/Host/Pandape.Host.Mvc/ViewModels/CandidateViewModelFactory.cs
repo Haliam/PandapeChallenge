@@ -11,42 +11,40 @@ namespace Pandape.Host.Mvc.ViewModels
         {
         }
 
-        public GetAllCandidatesViewModel GetAll(GetAllCandidatesResponse getAllCandidatesResponse)
+        public GetAllCandidatesViewModel GetAll(GetAllCandidatesResponse response)
         {
             var viewModel = new GetAllCandidatesViewModel();
 
-            var candidates = getAllCandidatesResponse.Candidates;
-
-            viewModel.Candidates = Mapper.Map<IEnumerable<CandidateViewModel>>(candidates).ToList();
+            viewModel.Candidates = Mapper.Map<IEnumerable<CandidateViewModel>>(response.CandidatesDto).ToList();
 
             return viewModel;
         }
 
-        public GetDetailsCandidateViewModel Details(GetDetailsCandidateResponse getDetailsCandidateResponse)
+        public GetDetailsCandidateViewModel Details(GetDetailsCandidateResponse response)
         {
             var viewModel = new GetDetailsCandidateViewModel();
 
-            viewModel.Candidate = getDetailsCandidateResponse.Candidate;
+            viewModel.Candidate = Mapper.Map<CandidateViewModel>(response.CandidateDto);
 
-            viewModel.CandidateExperiences = getDetailsCandidateResponse.CandidateExperiences;
+            viewModel.CandidateExperiences = Mapper.Map<List<CandidateExperienceViewModel>>(response.CandidateExperiencesDto);
 
             return viewModel;
         }
 
-        public EditCandidateViewModel Edit(GetByIdCandidateResponse getByIdCandidateResponse)
+        public EditCandidateViewModel Edit(GetByIdCandidateResponse response)
         {
             var viewModel = new EditCandidateViewModel();
 
-            viewModel.Candidate = getByIdCandidateResponse.Candidate;
+            viewModel.Candidate = Mapper.Map<CandidateViewModel>(response.CandidateDto);
 
             return viewModel;
         }
 
-        public DeleteCandidateViewModel Delete(GetByIdCandidateResponse getByIdCandidateResponse)
+        public DeleteCandidateViewModel Delete(GetByIdCandidateResponse response)
         {
             var viewModel = new DeleteCandidateViewModel();
 
-            viewModel.Candidate = getByIdCandidateResponse.Candidate;
+            viewModel.Candidate = Mapper.Map<CandidateViewModel>(response.CandidateDto);
 
             return viewModel;
         }
