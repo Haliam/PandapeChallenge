@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Pandape.Domain.Models;
+using Pandape.Application.Dtos;
 using Pandape.Host.Mvc.ViewModels;
 
 namespace Pandape.Host.Mvc.Mapping
@@ -8,7 +8,7 @@ namespace Pandape.Host.Mvc.Mapping
     {
         public CandidateProfile() 
         {
-            CreateMap<CandidateModel, CandidateViewModel>().ReverseMap();
+            CreateMap<CandidateDto, CandidateViewModel>().ReverseMap();
         }
     }
 }

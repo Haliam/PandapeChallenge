@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
+using Pandape.Application.Dtos;
 using Pandape.Domain.Entities;
-using Pandape.Domain.Models;
 
 namespace Pandape.Application.Mapping
 {
@@ -8,7 +8,8 @@ namespace Pandape.Application.Mapping
     {
         public CandidateAppProfile() 
         { 
-            CreateMap<Candidate, CandidateModel>().ReverseMap();
+            CreateMap<Candidate, CandidateDto>().ReverseMap();
+            CreateMap<CandidateExperience, CandidateExperienceDto>().ReverseMap();
         }
     }
 }
