@@ -27,7 +27,7 @@ namespace Pandape.Test.Application
 
             InitializeMapper();
 
-            QueryCandidateAppService = new QueryCandidateAppService(Mapper, CandidateQueryRepository.Object);
+            QueryCandidateAppService = new QueryCandidateAppService(Mapper, null, CandidateQueryRepository.Object);
         }
 
         private void InitializeMapper()
