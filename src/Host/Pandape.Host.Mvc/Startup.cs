@@ -10,17 +10,22 @@ using Pandape.Application.Mapping;
 using Pandape.Host.Mvc.ViewModels;
 using Pandape.Infrastructure.Persistence.DataBase;
 using Pandape.Infrastructure.Persistence.Repositories;
+using Serilog;
 
 namespace Pandape.Host.Mvc
 {
     public class Startup
     {
+        public IConfiguration Configuration { get; }
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-        }
 
-        public IConfiguration Configuration { get; }
+            Log.Logger = new LoggerConfiguration()
+               .ReadFrom.Configuration(configuration)
+               .CreateLogger();
+        }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
