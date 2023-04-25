@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Pandape.Host.Mvc.ViewModels
 {
-    public class GetDetailsCandidateViewModel
+    public class DetailsCandidateViewModel
     {
         public string Company { get; set; }
 
@@ -21,7 +20,5 @@ namespace Pandape.Host.Mvc.ViewModels
         public DateTime InsertDate { get; set; }
 
         public CandidateViewModel Candidate { get; set; }
-
-        public List<CandidateExperienceViewModel> CandidateExperiences { get; set; }
     }
 }

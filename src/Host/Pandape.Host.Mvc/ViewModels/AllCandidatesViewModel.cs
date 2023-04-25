@@ -2,7 +2,7 @@
 
 namespace Pandape.Host.Mvc.ViewModels
 {
-    public class GetAllCandidatesViewModel
+    public class AllCandidatesViewModel
     {
         public string Name { get; set; }
 

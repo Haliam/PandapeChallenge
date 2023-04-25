@@ -11,22 +11,20 @@ namespace Pandape.Host.Mvc.ViewModels
         {
         }
 
-        public GetAllCandidatesViewModel GetAll(GetAllCandidatesResponse response)
+        public AllCandidatesViewModel GetAll(GetAllCandidatesResponse response)
         {
-            var viewModel = new GetAllCandidatesViewModel();
+            var viewModel = new AllCandidatesViewModel();
 
             viewModel.Candidates = Mapper.Map<IEnumerable<CandidateViewModel>>(response.CandidatesDto).ToList();
 
             return viewModel;
         }
 
-        public GetDetailsCandidateViewModel Details(GetDetailsCandidateResponse response)
+        public DetailsCandidateViewModel Details(GetDetailsCandidateResponse response)
         {
-            var viewModel = new GetDetailsCandidateViewModel();
+            var viewModel = new DetailsCandidateViewModel();
 
             viewModel.Candidate = Mapper.Map<CandidateViewModel>(response.CandidateDto);
-
-            viewModel.CandidateExperiences = Mapper.Map<List<CandidateExperienceViewModel>>(response.CandidateExperiencesDto);
 
             return viewModel;
         }
