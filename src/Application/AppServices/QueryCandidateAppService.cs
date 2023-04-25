@@ -3,9 +3,7 @@ using Microsoft.Extensions.Logging;
 using Pandape.Application.CQRS.Queries;
 using Pandape.Application.CQRS.Responses;
 using Pandape.Application.Dtos;
-using Pandape.Domain.Entities;
 using Pandape.Infrastructure.Persistence.Repositories;
-using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -84,15 +82,11 @@ namespace Pandape.Application.AppServices
         {
             var response = new GetDetailsCandidateResponse();
 
-            var candidateExperiences = GetCandidateExperiences();
-
             try
             {
                 var candidate = await CandidateQueryRepository.GetById(query.Id);
 
                 response.CandidateDto = Mapper.Map<CandidateDto>(candidate);
-
-                response.CandidateExperiencesDto = Mapper.Map<List<CandidateExperienceDto>>(candidateExperiences);
             }
             catch (Exception ex)
             {
@@ -100,37 +94,6 @@ namespace Pandape.Application.AppServices
             }
 
             return response;
-        }
-
-
-        private List<CandidateExperience> GetCandidateExperiences()
-        {
-            var candidateExperiences = new List<CandidateExperience>
-            {
-
-                new CandidateExperience
-                {
-                    Company = "Google",
-                    Job = "Developer",
-                    Description= "Description",
-                    Salary = 40000,
-                    BeginDate= DateTime.Now.Date,
-                    EndDate = null,
-                    InsertDate = DateTime.Now.Date,
-                },
-                new CandidateExperience
-                {
-                    Company = "Imexin",
-                    Job = "Chemistry",
-                    Description= "Description",
-                    Salary = 50000,
-                    BeginDate= DateTime.Now.Date,
-                    EndDate = null,
-                    InsertDate = DateTime.Now.Date,
-                },
-            };
-
-            return candidateExperiences;
         }
     }
 }
