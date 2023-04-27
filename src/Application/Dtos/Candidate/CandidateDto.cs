@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace Pandape.Application.Dtos
 {
@@ -18,7 +17,5 @@ namespace Pandape.Application.Dtos
         public DateTime InsertDate { get; set; }
 
         public DateTime? ModifyDate { get; set; }
-
-        public ICollection<CandidateExperienceDto> CandidateExperiences { get; set; }
     }
 }
