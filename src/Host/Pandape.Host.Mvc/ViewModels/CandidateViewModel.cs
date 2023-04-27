@@ -1,9 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using Pandape.Domain.Entities;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
 using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Pandape.Host.Mvc.ViewModels
 {
@@ -38,7 +36,5 @@ namespace Pandape.Host.Mvc.ViewModels
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}")]
         public DateTime? ModifyDate { get; set; }
-
-        public List<CandidateExperience> CandidateExperiences { get; set; }
     }
 }

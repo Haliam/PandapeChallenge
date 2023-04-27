@@ -5,9 +5,11 @@ namespace Pandape.Host.Mvc.ViewModels
 {
     public interface ICandidateViewModelFactory 
     {
-        AllCandidatesViewModel GetAll(GetAllCandidatesResponse getAllCandidatesResponse);
+        AllCandidatesViewModel GetAll(GetAllCandidatesResponse AllCandidatesResponse);
 
-        DetailsCandidateViewModel Details(GetDetailsCandidateResponse getDetailsCandidateResponse);
+        DetailsCandidateViewModel Details(GetDetailsCandidateResponse DetailsCandidateResponse);
+
+        DetailsCandidateAndExperiencesViewModel Details(GetDetailsCandidateAndExperiencesResponse DetailsCandidateExperiencesResponse);
 
         EditCandidateViewModel Edit(GetByIdCandidateResponse getByIdCandidateResponse);
 

@@ -29,6 +29,17 @@ namespace Pandape.Host.Mvc.ViewModels
             return viewModel;
         }
 
+        public DetailsCandidateAndExperiencesViewModel Details(GetDetailsCandidateAndExperiencesResponse response)
+        {
+            var viewModel = new DetailsCandidateAndExperiencesViewModel();
+
+            viewModel.Candidate = Mapper.Map<CandidateViewModel>(response.CandidateDto);
+
+            viewModel.CandidateExperiences = Mapper.Map<IEnumerable<CandidateExperienceViewModel>>(response.CandidateExperienceDto.ToList());
+
+            return viewModel;
+        }
+
         public EditCandidateViewModel Edit(GetByIdCandidateResponse response)
         {
             var viewModel = new EditCandidateViewModel();
