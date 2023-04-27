@@ -54,6 +54,8 @@ namespace Pandape.Host.Mvc
 
             services.AddScoped<IQueryCandidateAppService, QueryCandidateAppService>();
 
+            services.AddScoped<IQueryCandidateAndExperiencesAppService, QueryCandidateAndExperiencesAppService>();
+
             services.AddScoped<ICandidateViewModelFactory, CandidateViewModelFactory>();
         }
 

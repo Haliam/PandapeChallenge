@@ -32,7 +32,7 @@ namespace Pandape.Host.Mvc.Controllers
         // GET: Candidates/Details/5
         public async Task<IActionResult> Details(int id)
         {
-            var response = await Mediator.Send(new GetDetailsCandidateQuery(id));
+            var response = await Mediator.Send(new GetDetailsCandidateAndExperiencesQuery(id));
 
             return View(ViewModelFactory.Details(response));
         }
