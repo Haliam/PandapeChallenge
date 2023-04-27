@@ -1,4 +1,4 @@
-﻿@model Pandape.Host.Mvc.ViewModels.GetDetailsCandidateViewModel
+﻿@model Pandape.Host.Mvc.ViewModels.DetailsCandidateAndExperiencesViewModel
 
 @{
     ViewData["Title"] = "Details Candidate Experience";
@@ -11,22 +11,22 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Company)
+                @Html.DisplayNameFor(model => model.CandidateExperience.Company)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Job)
+                @Html.DisplayNameFor(model => model.CandidateExperience.Job)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Description)
+                @Html.DisplayNameFor(model => model.CandidateExperience.Description)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Salary)
+                @Html.DisplayNameFor(model => model.CandidateExperience.Salary)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.BeginDate)
+                @Html.DisplayNameFor(model => model.CandidateExperience.BeginDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.InsertDate)
+                @Html.DisplayNameFor(model => model.CandidateExperience.InsertDate)
             </th>
             <th></th>
         </tr>
