@@ -30,13 +30,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Application\Pandape.Application.csproj" />
-    <ProjectReference Include="..\..\Domain\Pandape.Domain.csproj" />
-    <ProjectReference Include="..\..\Infrastructure\Pandape.Infrastructure.csproj" />
+    <Folder Include="Loggin\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Loggin\" />
+    <ProjectReference Include="..\..\Application\Pandape.Application.csproj" />
   </ItemGroup>
 
 </Project>
