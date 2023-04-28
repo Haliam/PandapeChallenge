@@ -1,7 +1,6 @@
 ﻿using MediatR;
-using Pandape.Application.AppServices;
-using System.Threading.Tasks;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace Pandape.Application.CQRS.Handlers
 {
@@ -9,13 +8,6 @@ namespace Pandape.Application.CQRS.Handlers
         : IRequestHandler<TRequest, TResponse> where TRequest 
         : IRequest<TResponse>
     {
-        protected IQueryCandidateAppService QueryCandidateAppService { get; }
-
-        public QueryHandlerBase( IQueryCandidateAppService queryCandidateAppService )
-        {
-            QueryCandidateAppService = queryCandidateAppService;
-        }
-
         public abstract Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken);
     }
 }

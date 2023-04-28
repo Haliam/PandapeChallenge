@@ -8,10 +8,10 @@ namespace Pandape.Application.CQRS.Handlers
 {
     public class GetDetailsCandidateQueryHandler : QueryHandlerBase<GetDetailsCandidateQuery, GetDetailsCandidateResponse>
     {
-        public GetDetailsCandidateQueryHandler(IQueryCandidateAppService queryCandidateAppService) 
-            : base(queryCandidateAppService)
-        {
-        }
+        protected IQueryCandidateAppService QueryCandidateAppService { get; }
+
+        public GetDetailsCandidateQueryHandler(IQueryCandidateAppService queryCandidateAppService) =>
+            QueryCandidateAppService = queryCandidateAppService;
 
         public override Task<GetDetailsCandidateResponse> Handle(GetDetailsCandidateQuery query, CancellationToken cancellationToken) =>
             QueryCandidateAppService.GetDetails(query);
