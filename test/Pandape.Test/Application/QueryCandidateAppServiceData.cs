@@ -7,7 +7,7 @@ namespace Pandape.Test.Application
 {
     public class QueryCandidateAppServiceData
     {
-        public static IEnumerable<object[]> FindTestData =>
+        public static IEnumerable<object[]> FindCandidateSuccess =>
         new List<object[]>
         {
             new object[]
@@ -47,7 +47,7 @@ namespace Pandape.Test.Application
             }
         };
 
-        public static IEnumerable<object[]> GetAllTestData =>
+        public static IEnumerable<object[]> GetAllCandidatesSuccess =>
         new List<object[]>
         {
             new object[]
@@ -126,7 +126,7 @@ namespace Pandape.Test.Application
             }
         };
 
-        public static IEnumerable<object[]> GetByIdTestData =>
+        public static IEnumerable<object[]> GetByIdCandidateSuccess =>
         new List<object[]>
         {
             new object[]

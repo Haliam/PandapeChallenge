@@ -7,22 +7,22 @@ namespace Pandape.Test.Application
     public class CommandCandidateAppServiceTest
     {
         [Theory]
-        [MemberData(nameof(CommandCandidateAppServiceData.Insert), MemberType = typeof(CommandCandidateAppServiceData))]
-        public async Task Insert_ShouldReturnResponse(InsertCandidateCommand command) 
+        [MemberData(nameof(CommandCandidateAppServiceData.InsertCandidateSuccess), MemberType = typeof(CommandCandidateAppServiceData))]
+        public async Task InsertCandidateSuccess(InsertCandidateCommand command) 
         {
 
         }
 
         [Theory]
-        [MemberData(nameof(CommandCandidateAppServiceData.Update), MemberType = typeof(CommandCandidateAppServiceData))]
-        public async Task Update_ShouldReturnResponse(UpdateCandidateCommand command)
+        [MemberData(nameof(CommandCandidateAppServiceData.UpdateCandidateSuccess), MemberType = typeof(CommandCandidateAppServiceData))]
+        public async Task UpdateCandidateSuccess(UpdateCandidateCommand command)
         {
 
         }
 
         [Theory]
-        [MemberData(nameof(CommandCandidateAppServiceData.Delete), MemberType = typeof(CommandCandidateAppServiceData))]
-        public async Task Delete_ShouldReturnResponse(DeleteCandidateCommand command)
+        [MemberData(nameof(CommandCandidateAppServiceData.DeleteCandidateSuccess), MemberType = typeof(CommandCandidateAppServiceData))]
+        public async Task DeleteCandidateSuccess(DeleteCandidateCommand command)
         {
 
         }

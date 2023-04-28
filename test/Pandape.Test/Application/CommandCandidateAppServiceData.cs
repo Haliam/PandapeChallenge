@@ -4,7 +4,7 @@ namespace Pandape.Test.Application
 {
     public class CommandCandidateAppServiceData
     {
-        public static IEnumerable<object[]> Insert =>
+        public static IEnumerable<object[]> InsertCandidateSuccess =>
         new List<object[]>
         {
             new object[]
@@ -12,7 +12,7 @@ namespace Pandape.Test.Application
             }
         };
 
-        public static IEnumerable<object[]> Update =>
+        public static IEnumerable<object[]> UpdateCandidateSuccess =>
         new List<object[]>
         {
             new object[]
@@ -20,7 +20,7 @@ namespace Pandape.Test.Application
             }
         };
 
-        public static IEnumerable<object[]> Delete =>
+        public static IEnumerable<object[]> DeleteCandidateSuccess =>
         new List<object[]>
         {
             new object[]

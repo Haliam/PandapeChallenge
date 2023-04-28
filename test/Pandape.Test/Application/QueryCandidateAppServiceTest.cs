@@ -3,10 +3,12 @@ using FluentAssertions;
 using Moq;
 using Pandape.Application.AppServices;
 using Pandape.Application.CQRS.Queries;
+using Pandape.Application.Dtos;
 using Pandape.Application.Mapping;
 using Pandape.Domain.Entities;
 using Pandape.Infrastructure.Persistence.Repositories;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -41,8 +43,8 @@ namespace Pandape.Test.Application
         }
 
         [Theory]
-        [MemberData(nameof(QueryCandidateAppServiceData.FindTestData), MemberType = typeof(QueryCandidateAppServiceData))]
-        public async Task Find_ShouldReturnResponse(IEnumerable<Candidate> candidates, FindCandidateQuery query) 
+        [MemberData(nameof(QueryCandidateAppServiceData.FindCandidateSuccess), MemberType = typeof(QueryCandidateAppServiceData))]
+        public async Task FindCandidateSuccess(IEnumerable<Candidate> candidates, FindCandidateQuery query) 
         {
             CandidateQueryRepository.Setup(c => c.Find(query.Expression)).ReturnsAsync(candidates);
 
@@ -52,14 +54,14 @@ namespace Pandape.Test.Application
 
             result.CandidatesDto.Should().NotBeNull();
 
-            result.CandidatesDto.Should().BeEquivalentTo(candidates);
+            result.CandidatesDto.Should().BeEquivalentTo(Mapper.Map<IEnumerable<CandidateDto>>(candidates));
 
             CandidateQueryRepository.Verify(x => x.Find(query.Expression), Times.Once);
         }
 
         [Theory]
-        [MemberData(nameof(QueryCandidateAppServiceData.GetAllTestData), MemberType = typeof(QueryCandidateAppServiceData))]
-        public async Task GetAll_ShouldReturnResponse(IEnumerable<Candidate> candidates) 
+        [MemberData(nameof(QueryCandidateAppServiceData.GetAllCandidatesSuccess), MemberType = typeof(QueryCandidateAppServiceData))]
+        public async Task GetAllCandidatesSuccess(IEnumerable<Candidate> candidates) 
         {
             CandidateQueryRepository.Setup(c => c.GetAll()).ReturnsAsync(candidates);
 
@@ -69,14 +71,14 @@ namespace Pandape.Test.Application
 
             result.CandidatesDto.Should().NotBeNull();
 
-            result.CandidatesDto.Should().BeEquivalentTo(candidates);
+            result.CandidatesDto.Should().BeEquivalentTo(Mapper.Map<IEnumerable<CandidateDto>>(candidates));
 
             CandidateQueryRepository.Verify(x => x.GetAll(), Times.Once);
         }
 
         [Theory]
-        [MemberData(nameof(QueryCandidateAppServiceData.GetByIdTestData), MemberType = typeof(QueryCandidateAppServiceData))]
-        public async Task GetById_ShouldReturnResponse(Candidate candidate) 
+        [MemberData(nameof(QueryCandidateAppServiceData.GetByIdCandidateSuccess), MemberType = typeof(QueryCandidateAppServiceData))]
+        public async Task GetByIdCandidateSuccess(Candidate candidate) 
         {
             CandidateQueryRepository.Setup(x => x.GetById(candidate.Id)).ReturnsAsync(candidate);
 
