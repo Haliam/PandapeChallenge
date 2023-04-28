@@ -6,6 +6,7 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{D97CC4DA-380D-45F5-88A6-2B90C077EDF8}"
 	ProjectSection(SolutionItems) = preProject
 		docs\README.md = docs\README.md
+		Pending.md = Pending.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{8D5C069B-1D9D-4BA4-A001-C3B4AA53BFB9}"
