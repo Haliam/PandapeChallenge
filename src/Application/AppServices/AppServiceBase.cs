@@ -6,9 +6,6 @@ namespace Pandape.Application.AppServices
     {
         protected IMapper Mapper { get; }
 
-        public AppServiceBase(IMapper mapper )
-        {
-            Mapper = mapper;
-        }
+        protected AppServiceBase(IMapper mapper) => Mapper = mapper;
     }
 }
