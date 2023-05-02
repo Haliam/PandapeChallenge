@@ -19,7 +19,11 @@ namespace Pandape.Host.Mvc.Controllers
         // GET: CandidateExperiences
         public async Task<IActionResult> Index()
         {
-            var candidateExperiences = await _context.CandidateExperiences.Include(c => c.Candidate).ToListAsync();
+            var candidateExperiences = await _context
+                .CandidateExperiences
+                .Include(c => c.Candidate)
+                .ToListAsync();
+
             return View(candidateExperiences);
         }
 
@@ -27,15 +31,15 @@ namespace Pandape.Host.Mvc.Controllers
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
-            {
                 return NotFound();
-            }
 
-            var candidateExperience = await _context.CandidateExperiences.Include(c => c.Candidate).FirstOrDefaultAsync(m => m.Id == id);
+            var candidateExperience = await _context
+                .CandidateExperiences
+                .Include(c => c.Candidate)
+                .FirstOrDefaultAsync(m => m.Id == id);
+
             if (candidateExperience == null)
-            {
                 return NotFound();
-            }
 
             return View(candidateExperience);
         }
@@ -56,9 +60,12 @@ namespace Pandape.Host.Mvc.Controllers
             if (ModelState.IsValid)
             {
                 _context.Add(candidateExperience);
+
                 await _context.SaveChangesAsync();
+
                 return RedirectToAction(nameof(Index));
             }
+
             return View(candidateExperience);
         }
 
@@ -66,15 +73,16 @@ namespace Pandape.Host.Mvc.Controllers
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
-            {
                 return NotFound();
-            }
 
-            var candidateExperience = await _context.CandidateExperiences.Include(c => c.Candidate).FirstAsync(c => c.Id == id);
+            var candidateExperience = await _context
+                .CandidateExperiences
+                .Include(c => c.Candidate)
+                .FirstAsync(c => c.Id == id);
+            
             if (candidateExperience == null)
-            {
                 return NotFound();
-            }
+
             return View(candidateExperience);
         }
 
@@ -83,18 +91,19 @@ namespace Pandape.Host.Mvc.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,CandidateId,Company,Job,Description,Salary,BeginDate,EndDate,InsertDate,ModifyDate")] CandidateExperience candidateExperience)
+        public async Task<IActionResult> Edit(
+            int id, 
+            [Bind("Id,CandidateId,Company,Job,Description,Salary,BeginDate,EndDate,InsertDate,ModifyDate")] CandidateExperience candidateExperience)
         {
             if (id != candidateExperience.Id)
-            {
                 return NotFound();
-            }
 
             if (ModelState.IsValid)
             {
                 try
                 {
                     _context.Update(candidateExperience);
+
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -108,8 +117,10 @@ namespace Pandape.Host.Mvc.Controllers
                         throw;
                     }
                 }
+
                 return RedirectToAction(nameof(Index));
             }
+
             return View(candidateExperience);
         }
 
@@ -117,18 +128,15 @@ namespace Pandape.Host.Mvc.Controllers
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
-            {
                 return NotFound();
-            }
 
-            var candidateExperience = await _context.CandidateExperiences
+            var candidateExperience = await _context
+                .CandidateExperiences
                 .Include(c => c.Candidate)
                 .FirstOrDefaultAsync(m => m.Id == id);
 
             if (candidateExperience == null)
-            {
                 return NotFound();
-            }
 
             return View(candidateExperience);
         }
@@ -138,9 +146,14 @@ namespace Pandape.Host.Mvc.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var candidateExperience = await _context.CandidateExperiences.FindAsync(id);
+            var candidateExperience = await _context
+                .CandidateExperiences
+                .FindAsync(id);
+
             _context.CandidateExperiences.Remove(candidateExperience);
+
             await _context.SaveChangesAsync();
+
             return RedirectToAction(nameof(Index));
         }
 
