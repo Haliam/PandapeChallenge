@@ -19,7 +19,8 @@ namespace Pandape.Host.Mvc.Controllers
         // GET: CandidateExperiences
         public async Task<IActionResult> Index()
         {
-            return View(await _context.CandidateExperiences.ToListAsync());
+            var candidateExperiences = await _context.CandidateExperiences.Include(c => c.Candidate).ToListAsync();
+            return View(candidateExperiences);
         }
 
         // GET: CandidateExperiences/Details/5
@@ -30,8 +31,7 @@ namespace Pandape.Host.Mvc.Controllers
                 return NotFound();
             }
 
-            var candidateExperience = await _context.CandidateExperiences
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var candidateExperience = await _context.CandidateExperiences.Include(c => c.Candidate).FirstOrDefaultAsync(m => m.Id == id);
             if (candidateExperience == null)
             {
                 return NotFound();
@@ -70,7 +70,7 @@ namespace Pandape.Host.Mvc.Controllers
                 return NotFound();
             }
 
-            var candidateExperience = await _context.CandidateExperiences.FindAsync(id);
+            var candidateExperience = await _context.CandidateExperiences.Include(c => c.Candidate).FirstAsync(c => c.Id == id);
             if (candidateExperience == null)
             {
                 return NotFound();
@@ -83,7 +83,7 @@ namespace Pandape.Host.Mvc.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CandidateId,Company,Job,Description,Salary,BeginDate,EndDate,InsertDate,ModifyDate")] CandidateExperience candidateExperience)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,CandidateId,Company,Job,Description,Salary,BeginDate,EndDate,InsertDate,ModifyDate")] CandidateExperience candidateExperience)
         {
             if (id != candidateExperience.Id)
             {
@@ -122,7 +122,9 @@ namespace Pandape.Host.Mvc.Controllers
             }
 
             var candidateExperience = await _context.CandidateExperiences
+                .Include(c => c.Candidate)
                 .FirstOrDefaultAsync(m => m.Id == id);
+
             if (candidateExperience == null)
             {
                 return NotFound();
