@@ -4,7 +4,8 @@
 The objective of this training is to create an application by putting into practice concepts such as:
 DDD, SOLID, Code first, dependency injection, error handling, unit testing with xUnit and the MVC, CQRS and Mediator patterns.
 
-Requirements: 
+### Requirements: 
+
 A recruiter needs to manage a database of candidates for a selection process. 
 From the tables Candidate and Candidate Experience develop an application where you can:
 
@@ -13,11 +14,13 @@ From the tables Candidate and Candidate Experience develop an application where 
 - Edit a candidate's registration and professional experience. 
 - Delete a candidate.
 
-Please note: 
+### Please note: 
+
 The current implementation only includes the development in CandidatesController, 
 understanding this as a model to be followed in CandidateExperiencesController.
 
-Pending development: 
+### Pending development: 
+
 Many artefacts are still to be developed, however, it is worth mentioning some artefacts that I consider necessary in the next development steps. 
 
 Replicate CQRS implementation on CandidateExperiencesController
