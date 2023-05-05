@@ -1,29 +1,27 @@
 # PandapeChallenge
 
-![Screenshot](entities.png)
 
+The objective of this training is to create an application by putting into practice concepts such as:
+DDD, SOLID, Code first, dependency injection, error handling and the MVC, CQRS and Mediator patterns.
+
+Requirements: 
 A recruiter needs to manage a database of candidates for a selection process. 
-Using the relational model represented above as a basis, develop a web application using MVC architecture.
-that allows the recruiter to carry out the following actions: 
+From the tables Candidate and Candidate Experience develop an application where you can:
 
 - Consult a list of registered candidates. 
 - Register new candidates and their professional experience. 
-- Edit the registration of a candidate and his professional experiences. 
+- Edit a candidate's registration and professional experience. 
 - Delete a candidate.
 
-Requirements 
+Please note: 
+The current implementation only includes the development in CandidatesController, 
+understanding this as a model to be followed in CandidateExperiencesController.
 
-- Uses .Net Core. 
-- Use Entity Framework as ORM for queries and data persistence. 
-- Develop the application using the relational model shown at the beginning of this document as a base. 
-- Develop the entity model using Code-First with Entity Framework. 
-- Use SQL in-memory or SQL Express (localdb)
-- Don't focus on the Frontend, it's all about the Backend! 
+Pending development: 
+Many artefacts are still to be developed, however, it is worth mentioning some artefacts that I consider necessary in the next development steps. 
 
-Tips 
-
-- Try to use your knowledge and good practices of OOP, DDD, SOLID and Clean Code. 
-- If you have knowledge of the CQRS architectural pattern, use it! 
-- Our goal is to know your programming style, there is no right or wrong here. 
-- And most of all, have fun!
-
+Replicate CQRS implementation on CandidateExperiencesController
+Pagination Sorting and Filtering
+Implement Validation Rules 
+Globar error handling 
+Saving logs in database 
