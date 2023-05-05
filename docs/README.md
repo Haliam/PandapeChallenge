@@ -2,7 +2,7 @@
 
 
 The objective of this training is to create an application by putting into practice concepts such as:
-DDD, SOLID, Code first, dependency injection, error handling and the MVC, CQRS and Mediator patterns.
+DDD, SOLID, Code first, dependency injection, error handling, unit testing with xUnit and the MVC, CQRS and Mediator patterns.
 
 Requirements: 
 A recruiter needs to manage a database of candidates for a selection process. 
