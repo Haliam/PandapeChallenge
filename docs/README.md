@@ -24,4 +24,6 @@ Replicate CQRS implementation on CandidateExperiencesController
 Pagination Sorting and Filtering
 Implement Validation Rules 
 Globar error handling 
+Create custom errors for Error Handling
 Saving logs in database 
+Sensitive information management with encryption
