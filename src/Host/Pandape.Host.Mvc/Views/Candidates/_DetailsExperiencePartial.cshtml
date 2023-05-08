@@ -5,7 +5,7 @@
 }
 
 
-<h6>Details Candidate Experience</h6>
+<h5>Candidate Experiences</h5>
 
 <table class="table">
     <thead>
@@ -28,7 +28,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.CandidateExperience.InsertDate)
             </th>
-            <th></th>
+            <th>
+                @Html.DisplayName("Actions")
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -52,6 +54,9 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.InsertDate)
+                </td>
+                <td>
+                    <a asp-controller = "CandidateExperiences" asp-action="Edit" asp-route-id="@Model.Candidate.Id"></a>
                 </td>
             </tr>
         }

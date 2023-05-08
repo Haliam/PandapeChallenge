@@ -1,7 +1,6 @@
 ﻿
 @model Pandape.Host.Mvc.ViewModels.AllCandidatesViewModel
 
-
 @{
     ViewData["Title"] = "Index";
 }
@@ -32,7 +31,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.ModifyDate)
             </th>
-            <th></th>
+            <th>
+                @Html.DisplayName("Actions")
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -58,8 +59,8 @@
                     @Html.DisplayFor(modelItem => item.ModifyDate)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> 
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> 
                     <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                 </td>
             </tr>
