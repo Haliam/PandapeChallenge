@@ -1,8 +1,12 @@
 # PandapeChallenge
 
-
-The objective of this training is to create an application by putting into practice concepts such as:
+The goal of this training is to create an application by putting into practice concepts such as:
 DDD, SOLID, Code first, dependency injection, error handling, unit testing with xUnit and the MVC, CQRS and Mediator patterns.
+
+### Please note: 
+
+The current implementation is back-end oriented, leaving the front-end to be improved and modified and
+only includes the development in CandidatesController, understanding this as a model to be followed in CandidateExperiencesController. 
 
 ### Requirements: 
 
@@ -14,10 +18,6 @@ From the tables Candidate and Candidate Experience develop an application where 
 - Edit a candidate's registration and professional experience. 
 - Delete a candidate.
 
-### Please note: 
-
-The current implementation only includes the development in CandidatesController, 
-understanding this as a model to be followed in CandidateExperiencesController.
 
 ### Pending development: 
 
