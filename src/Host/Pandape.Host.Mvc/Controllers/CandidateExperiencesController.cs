@@ -45,9 +45,14 @@ namespace Pandape.Host.Mvc.Controllers
         }
 
         // GET: CandidateExperiences/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create(int? id)
         {
-            return View();
+            if (id == null)
+                return View();
+
+            var candidate = await _context.Candidates.FirstOrDefaultAsync(m => m.Id == id);
+
+            return View(candidate);
         }
 
         // POST: CandidateExperiences/Create
@@ -55,7 +60,9 @@ namespace Pandape.Host.Mvc.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CandidateId,Company,Job,Description,Salary,BeginDate,EndDate,InsertDate,ModifyDate")] CandidateExperience candidateExperience)
+        public async Task<IActionResult> Create(
+            int id,
+            [Bind("Id,CandidateId,Company,Job,Description,Salary,BeginDate,EndDate,InsertDate,ModifyDate")] CandidateExperience candidateExperience)
         {
             if (ModelState.IsValid)
             {
