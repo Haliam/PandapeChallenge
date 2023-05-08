@@ -10,7 +10,7 @@ namespace Pandape.Application.CQRS.Handlers
     {
         public InsertCandidateCommandHandler(ICommandCandidateAppService commandCandidateAppService) 
             : base(commandCandidateAppService)
-        {       
+        {
         }
 
         public override Task<InsertCandidateResponse> Handle(InsertCandidateCommand command, CancellationToken cancellationToken) =>
